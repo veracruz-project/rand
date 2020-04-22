@@ -25,7 +25,7 @@ serde1 = ["serde"] # enables serde for BlockRng wrapper
 
 [dependencies]
 serde = { version = "1", features = ["derive"], optional = true }
-getrandom = { version = "0.1", optional = true }
+getrandom = { path = "../../veracruz-getrandom", optional = true }
 
 [package.metadata.docs.rs]
 all-features = true
