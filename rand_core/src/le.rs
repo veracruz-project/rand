@@ -18,10 +18,7 @@ macro_rules! read_slice {
         assert_eq!($src.len(), $size * $dst.len());
 
         unsafe {
-            ptr::copy_nonoverlapping(
-                $src.as_ptr(),
-                $dst.as_mut_ptr() as *mut u8,
-                $src.len());
+            ptr::copy_nonoverlapping($src.as_ptr(), $dst.as_mut_ptr() as *mut u8, $src.len());
         }
         for v in $dst.iter_mut() {
             *v = v.$which();

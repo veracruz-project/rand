@@ -189,7 +189,7 @@ where <R as BlockRngCore>::Results: AsRef<[u32]> + AsMut<[u32]>
             if cfg!(any(target_endian = "little")) {
                 // requires little-endian CPU
                 #[allow(clippy::cast_ptr_alignment)] // false positive
-                let ptr: *const u64 = results[index..=index+1].as_ptr() as *const u64;
+                let ptr: *const u64 = results[index..=index + 1].as_ptr() as *const u64;
                 unsafe { ptr::read_unaligned(ptr) }
             } else {
                 let x = u64::from(results[index]);

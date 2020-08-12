@@ -117,11 +117,7 @@ mod test {
             assert_eq!(distr.sample(&mut half_rng), median);
         }
 
-        for &(min, max, mode) in &[
-            (-1., 1., 2.),
-            (-1., 1., -2.),
-            (2., 1., 1.),
-        ] {
+        for &(min, max, mode) in &[(-1., 1., 2.), (-1., 1., -2.), (2., 1., 1.)] {
             assert!(Triangular::new(min, max, mode).is_err());
         }
     }

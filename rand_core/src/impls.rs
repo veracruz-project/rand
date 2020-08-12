@@ -76,19 +76,14 @@ macro_rules! fill_via_chunks {
         let chunk_size = (chunk_size_u8 + $size - 1) / $size;
         if cfg!(target_endian = "little") {
             unsafe {
-                copy_nonoverlapping(
-                    $src.as_ptr() as *const u8,
-                    $dst.as_mut_ptr(),
-                    chunk_size_u8);
+                copy_nonoverlapping($src.as_ptr() as *const u8, $dst.as_mut_ptr(), chunk_size_u8);
             }
         } else {
             for (&n, chunk) in $src.iter().zip($dst.chunks_mut($size)) {
                 let tmp = n.to_le();
                 let src_ptr = &tmp as *const $ty as *const u8;
                 unsafe {
-                    copy_nonoverlapping(src_ptr,
-                                        chunk.as_mut_ptr(),
-                                        chunk.len());
+                    copy_nonoverlapping(src_ptr, chunk.as_mut_ptr(), chunk.len());
                 }
             }
         }

@@ -218,9 +218,8 @@ mod tests {
         let mut incorrect = false;
         for _ in 0..100 {
             let c = rng.sample(Alphanumeric);
-            incorrect |= !((c >= '0' && c <= '9') ||
-                           (c >= 'A' && c <= 'Z') ||
-                           (c >= 'a' && c <= 'z') );
+            incorrect |=
+                !((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
         }
         assert!(incorrect == false);
     }
